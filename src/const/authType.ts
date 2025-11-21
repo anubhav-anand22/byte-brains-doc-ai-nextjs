@@ -1,0 +1,1 @@
+export const AUTH_TYPE = ["GOOGLE" , "EMAIL_PASSWORD"]

@@ -1,0 +1,36 @@
+.main {
+  background-image: url("/mob-doc-4.jpg");
+  min-height: 100dvh;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  overflow: auto;
+}
+
+.sec_two,
+.sec_one {
+  background-color: var(--glass-bg-color);
+  backdrop-filter: blur(5px);
+  border: 1px solid var(--border-li);
+  padding: 16px;
+  border-radius: 7px;
+  width: min(600px, 90vw);
+  margin: 30px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card_cont > div,
+.card_cont {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+
+
+@media (min-width: 800px) {
+  .main {
+    background-image: url("/doc3.jpg");
+  }
+}

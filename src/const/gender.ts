@@ -1,0 +1,1 @@
+export const GENDER: Gender[] = ["M", "F", "O"];

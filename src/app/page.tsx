@@ -1,68 +1,54 @@
 // import Image from "next/image";
+import Login from "@/Components/Login/Login";
 import styles from "./page.module.css";
+import Header from "@/Components/Header/Header";
+import { ToastContainer } from "react-toastify";
+import Link from "next/link";
+import { ROUTES } from "@/const/routes";
+import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <h1>Development underway...</h1>
-      <h2>Doctor ai project by byte brains</h2>
-      {/* <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
+    <section className={styles.page} id="home">
+      <div className="header_spacer"></div>
+
+      <div className={styles.main_cont}>
+        <div className={styles.main}>
+          <h1>
+            <b>Your Health, Our Promise</b>
+          </h1>
+          <p></p>
           <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
+            From prevention to cure, and from guidance to support, our promise is to stand beside
+            you at every stage of your healthcare journey.
           </p>
+          <p>
+            With trust, dedication, and compassion, our mission is to provide care that goes beyond
+            medicine.
+          </p>
+          <p></p>
+
+          {/* <p>
+            From prevention to cure, from guidance to support our promise is to stand beside you at
+            every stage of your healthcare journey
+          </p>
+          <p>with trust and dedication.</p>
+          <p>Our mission is to provide care that goes beyond medicines.</p>
+          <h3>
+            <br />
+            our promise is to stand beside you at every stage of your healthcare journey,
+            <br /> with trust and dedication.
+            <br />
+            Our mission is to provide care that goes beyond medicines.
+          </h3> */}
+
+          <div className={styles.btn_cont}>
+            <Link href={ROUTES.ASK_DOCTOR.path}>
+              <button>START CONSULTATION</button>
+            </Link>
+          </div>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main> */}
-    </div>
+      </div>
+    </section>
   );
 }

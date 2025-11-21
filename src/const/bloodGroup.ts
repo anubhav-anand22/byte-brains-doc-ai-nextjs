@@ -1,0 +1,1 @@
+export const BLOOD_GROUP: BloodGroup[] = ["+A", "+B", "+AB", "+O", "-A", "-B", "-AB", "-O", "RARE"]

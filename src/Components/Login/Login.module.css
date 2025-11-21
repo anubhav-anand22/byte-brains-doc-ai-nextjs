@@ -1,0 +1,145 @@
+.main {
+  position: fixed;
+  z-index: var(--login-z-index);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+  background-color: var(--glass-bg-color);
+}
+
+.visible {
+  display: flex;
+}
+
+.main form {
+  padding: 20px;
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+  background-color: var(--glass-bg-color);
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  width: min(300px, 90vw);
+  border: 1px solid var(--border-li);
+  box-shadow: 0px 0px 5000px var(--shadow);
+}
+
+.avatar_btn_cont,
+.main form > input,
+.main form > select,
+.main form > textarea {
+  background-color: var(--background);
+  border: 1px solid var(--border-li);
+  padding: 7px;
+  border-radius: 7px;
+  outline: transparent;
+}
+
+.main form > select:focus,
+.main form > select:hover,
+.main form > textarea:focus,
+.main form > textarea:hover,
+.main form > input:focus,
+.main form > input:hover {
+  border: 1px solid var(--outline-li);
+}
+
+.main form > textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.avatar_btn_cont {
+  position: relative;
+  overflow: hidden;
+}
+
+.avatar_btn_cont input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  opacity: 0;
+}
+
+.pass_cont {
+  display: flex;
+  gap: 10px;
+  border: 1px solid var(--border-li);
+  border-radius: 7px;
+  align-items: center;
+  padding-right: 7px;
+  background-color: var(--background);
+}
+
+.pass_cont svg {
+  color: var(--txt);
+}
+
+.pass_cont > input {
+  flex: 1;
+  padding: 7px;
+  border-radius: 7px;
+  outline: transparent;
+  border: none;
+  background-color: var(--background);
+}
+
+.txt_btn {
+  font-size: 0.85rem;
+}
+
+.txt_btn span {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.signup_type_cont {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.signup_type_cont > span {
+  margin-left: 10px;
+  display: flex;
+  gap: 7px;
+}
+
+.submit_btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+
+.loader_icon {
+  width: 16px;
+  height: 16px;
+  animation: spinner 1s linear infinite;
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* .main form > button {
+  background-color: var(--action);
+  border: none;
+  color: var(--action-color);
+  padding: 10px;
+  border-radius: 7px;
+  font-weight: bold;
+} */
+
+/* .pass_cont svg {
+  color: var(--foreground);
+} */

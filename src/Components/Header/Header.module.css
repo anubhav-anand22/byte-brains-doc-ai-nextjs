@@ -1,0 +1,68 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  height: var(--header-height);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--header-z-index);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  padding: 5px 15px;
+  border-bottom: 1px solid var(--border-li);
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+  background-color: var(--glass-bg-color);
+}
+
+/* .header_back {
+  position: fixed;
+  content: "-";
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-height);
+  background: var(--txt);
+  opacity: 0.1;
+  z-index: var(--header-after-z-index);
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+}  */
+
+.header nav {
+  display: flex;
+  gap: 10px;
+}
+
+.header nav button {
+  padding-left: 28px;
+  padding-right: 28px;
+}
+
+.header nav ul {
+  display: flex;
+  list-style: none;
+  gap: 10px;
+  align-items: center;
+}
+
+.header nav ul a {
+  position: relative;
+}
+
+.header nav ul a::after {
+  content: "-";
+  position: absolute;
+  color: transparent;
+  background-color: var(--txt);
+  width: 0%;
+  height: 2px;
+  transition: width 0.15s ease-in-out;
+}
+
+.header nav ul a:hover::after,
+.header nav ul .current::after {
+  width: 100%;
+}
