@@ -46,6 +46,16 @@ const Login = () => {
   //   setIsLogin(state.loginType === "LOGIN");
   // }, [state.loginType]);
 
+  const reset = () => {
+    setEmail("");
+    setPassword("");
+    setName("");
+    setAge("");
+    setGender(GENDER[0]);
+    setBloodGroup(BLOOD_GROUP[0]);
+    setPreviousIllness("");
+  };
+
   const loadUser = useCallback(
     async (firebaseUserObj: User | null | undefined) => {
       if (firebaseUserObj) {
@@ -88,29 +98,88 @@ const Login = () => {
         toast.success("Login success");
       } else {
         const ageInt = parseInt(age);
-        if (
-          // !avatar ||
-          !name ||
-          name.length < 4 ||
-          !email ||
-          !gender ||
-          !age ||
-          isNaN(ageInt) ||
-          ageInt < 3 ||
-          ageInt > 150 ||
-          !bloodGroup ||
-          !previousIllness ||
-          previousIllness.length < 10
-        ) {
-          toast.warning("All required fields are not filled properly");
-          return console.log("wrong data in input");
+
+        // if (
+        //   // !avatar ||
+        //   !name ||
+        //   name.length < 4 ||
+        //   !gender ||
+        //   !age ||
+        //   isNaN(ageInt) ||
+        //   ageInt < 3 ||
+        //   ageInt > 150 ||
+        //   !bloodGroup ||
+        //   !previousIllness ||
+        //   previousIllness.length < 10
+        // ) {
+        //   toast.warning("All required fields are not filled properly");
+        //   return console.log("wrong data in input");
+        // }
+
+        if (!name) {
+          toast.warning("Name is required");
+          return;
+        }
+
+        if (name.length < 4) {
+          toast.warning("Name must be at least 4 characters long");
+          return;
+        }
+
+        if (!gender) {
+          toast.warning("Please select a gender");
+          return;
+        }
+
+        if (!age) {
+          toast.warning("Age is required");
+          return;
+        }
+
+        if (isNaN(ageInt)) {
+          toast.warning("Age must be a valid number");
+          return;
+        }
+
+        if (ageInt < 3) {
+          toast.warning("Age must be at least 3");
+          return;
+        }
+
+        if (ageInt > 150) {
+          toast.warning("Age cannot be greater than 150");
+          return;
+        }
+
+        if (!bloodGroup) {
+          toast.warning("Blood group is required");
+          return;
+        }
+
+        if (!previousIllness) {
+          toast.warning("Previous illness field is required");
+          return;
+        }
+
+        if (previousIllness.length < 10) {
+          toast.warning("Previous illness description must be at least 10 characters long");
+          return;
         }
 
         let user: UserCredential;
 
+        let e = email;
+
         if (isSignUpWithGoogle) {
           user = await signInWithPopup(firebaseAuth, new GoogleAuthProvider());
+          if (user.user.email) {
+            e = user.user.email;
+          }
         } else {
+          if (!email || !password) {
+            toast.warning("Email and password are not filled properly");
+            return console.log("wrong data in input");
+          }
           user = await createUserWithEmailAndPassword(firebaseAuth, email, password);
         }
 
@@ -119,7 +188,7 @@ const Login = () => {
         const authType: AuthType = isSignUpWithGoogle ? "GOOGLE" : "EMAIL_PASSWORD";
         const formData = new FormData();
         formData.append("name", name);
-        formData.append("email", email);
+        formData.append("email", e);
         formData.append("gender", gender);
         formData.append("age", age);
         formData.append("blood_group", bloodGroup);
@@ -148,6 +217,7 @@ const Login = () => {
 
         toast.success("Signup success");
       }
+      reset();
     } catch (e) {
       console.log(e);
       toast.error("Something went wrong");
@@ -164,7 +234,7 @@ const Login = () => {
         }
       }}
     >
-      <form onSubmit={submitHandler}>
+      <form onSubmit={(e) => submitHandler(e).finally(() => setIsLoading(false))}>
         <h1>{isLogin ? "Log In" : "Sign Up"}</h1>
         {isSignUpWithGoogle ? null : (
           <>
